@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Selamat Pagi ❤️</title>
+<title>Selamat Pagi My Bini ❤️</title>
 
 <style>
 body {
@@ -12,7 +12,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   overflow: hidden;
 }
 
@@ -21,35 +21,24 @@ body {
   padding: 25px;
   border-radius: 20px;
   text-align: center;
-  width: 80%;
-  max-width: 320px;
-  animation: muncul 2s ease;
+  width: 85%;
+  max-width: 330px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 h1 {
   color: #e91e63;
-  animation: teks 3s infinite alternate;
 }
 
-p {
+#text {
   font-size: 16px;
+  min-height: 120px;
 }
 
 .heart {
   position: absolute;
-  color: red;
-  font-size: 20px;
-  animation: jatuh 5s linear infinite;
-}
-
-@keyframes muncul {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
-}
-
-@keyframes teks {
-  from { opacity: 0.3; }
-  to { opacity: 1; }
+  font-size: 18px;
+  animation: jatuh linear infinite;
 }
 
 @keyframes jatuh {
@@ -62,17 +51,43 @@ p {
 <body>
 
 <div class="box">
-  <h1>Selamat Pagi My Bini ❤️</h1>
-  <p>
-    Semoga hari ini kamu bahagia,<br>
-    sehat selalu,<br>
-    dan jangan lupa…<br><br>
-    aku cinta kamu setiap hari 🥰
-  </p>
+  <h1>Selamat Pagi My Bini 🌞❤️</h1>
+  <p id="text"></p>
 </div>
 
+<!-- MUSIK ROMANTIS -->
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-for (let i = 0; i < 15; i++) {
+/* EFEK KETIK */
+const text = `Selamat pagi cinta 
+
+Semoga hari ini kamu bangun
+dengan senyum paling manis.
+
+Apa pun yang kamu hadapi hari ini,
+ingat ya…
+kamu tidak pernah sendirian.
+
+Ada aku,
+yang selalu mencintaimu,
+setiap pagi, siang, dan malam 🥰`;
+
+let i = 0;
+const speed = 50;
+function typeWriter() {
+  if (i < text.length) {
+    document.getElementById("text").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+typeWriter();
+
+/* LOVE JATUH */
+for (let j = 0; j < 20; j++) {
   let heart = document.createElement("div");
   heart.innerHTML = "❤️";
   heart.className = "heart";
