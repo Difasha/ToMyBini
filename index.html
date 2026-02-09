@@ -8,93 +8,73 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background: #fff0f5;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
+  font-family: Arial;
 }
 
-.box {
-  background: white;
-  padding: 25px;
-  border-radius: 20px;
+#heart {
+  line-height: 22px;
+  font-size: 20px;
   text-align: center;
-  width: 85%;
-  max-width: 330px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: muncul 2s ease;
 }
 
-h1 {
-  color: #e91e63;
+@keyframes muncul {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
 }
 
 #text {
+  margin-top: 20px;
   font-size: 16px;
-  min-height: 120px;
-}
-
-.heart {
-  position: absolute;
-  font-size: 18px;
-  animation: jatuh linear infinite;
-}
-
-@keyframes jatuh {
-  from { top: -10%; }
-  to { top: 110%; }
+  text-align: center;
+  width: 85%;
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
-  <h1>Selamat Pagi My Bini 🌞❤️</h1>
-  <p id="text"></p>
+<div id="heart">
+❤️ ❤️ ❤️   ❤️ ❤️ ❤️<br>
+❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️<br>
+❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️<br>
+&nbsp;❤️ ❤️ ❤️ ❤️ ❤️ ❤️<br>
+&nbsp;&nbsp;❤️ ❤️ ❤️ ❤️<br>
+&nbsp;&nbsp;&nbsp;❤️ ❤️<br>
 </div>
 
-<!-- MUSIK ROMANTIS -->
+<p id="text"></p>
+
 <audio autoplay loop>
   <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-/* EFEK KETIK */
-const text = `Selamat pagi cinta 
+const msg = `Selamat pagi my bini 🌞❤️
 
-Semoga hari ini kamu bangun
-dengan senyum paling manis.
+Semoga hari ini
+dipenuhi senyum,
+kesehatan,
+dan kebahagiaan.
 
-Apa pun yang kamu hadapi hari ini,
-ingat ya…
-kamu tidak pernah sendirian.
-
-Ada aku,
-yang selalu mencintaimu,
-setiap pagi, siang, dan malam 🥰`;
+Aku selalu mencintaimu,
+setiap hari,
+tanpa jeda 🥰`;
 
 let i = 0;
-const speed = 50;
-function typeWriter() {
-  if (i < text.length) {
-    document.getElementById("text").innerHTML += text.charAt(i);
+function ketik() {
+  if (i < msg.length) {
+    document.getElementById("text").innerHTML += msg.charAt(i);
     i++;
-    setTimeout(typeWriter, speed);
+    setTimeout(ketik, 50);
   }
 }
-typeWriter();
-
-/* LOVE JATUH */
-for (let j = 0; j < 20; j++) {
-  let heart = document.createElement("div");
-  heart.innerHTML = "❤️";
-  heart.className = "heart";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (3 + Math.random() * 5) + "s";
-  document.body.appendChild(heart);
-}
+ketik();
 </script>
 
 </body>
